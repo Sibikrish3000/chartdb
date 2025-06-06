@@ -1,7 +1,12 @@
 import { emptyFn } from '@/lib/utils';
 import { createContext } from 'react';
 
-export type SidebarSection = 'tables' | 'relationships' | 'dependencies';
+export type SidebarSection =
+    | 'tables'
+    | 'relationships'
+    | 'dependencies'
+    | 'areas'
+    | 'customTypes';
 
 export interface LayoutContext {
     openedTableInSidebar: string | undefined;
@@ -15,6 +20,14 @@ export interface LayoutContext {
     openedDependencyInSidebar: string | undefined;
     openDependencyFromSidebar: (dependencyId: string) => void;
     closeAllDependenciesInSidebar: () => void;
+
+    openedAreaInSidebar: string | undefined;
+    openAreaFromSidebar: (areaId: string) => void;
+    closeAllAreasInSidebar: () => void;
+
+    openedCustomTypeInSidebar: string | undefined;
+    openCustomTypeFromSidebar: (customTypeId: string) => void;
+    closeAllCustomTypesInSidebar: () => void;
 
     selectedSidebarSection: SidebarSection;
     selectSidebarSection: (section: SidebarSection) => void;
@@ -40,6 +53,14 @@ export const layoutContext = createContext<LayoutContext>({
     openedDependencyInSidebar: undefined,
     openDependencyFromSidebar: emptyFn,
     closeAllDependenciesInSidebar: emptyFn,
+
+    openedAreaInSidebar: undefined,
+    openAreaFromSidebar: emptyFn,
+    closeAllAreasInSidebar: emptyFn,
+
+    openedCustomTypeInSidebar: undefined,
+    openCustomTypeFromSidebar: emptyFn,
+    closeAllCustomTypesInSidebar: emptyFn,
 
     selectSidebarSection: emptyFn,
     openTableFromSidebar: emptyFn,

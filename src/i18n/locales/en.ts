@@ -41,9 +41,7 @@ export const en = {
             help: {
                 help: 'Help',
                 docs_website: 'Docs',
-                visit_website: 'Visit ChartDB',
                 join_discord: 'Join us on Discord',
-                schedule_a_call: 'Talk with us!',
             },
         },
 
@@ -145,6 +143,7 @@ export const en = {
                     field_actions: {
                         title: 'Field Attributes',
                         unique: 'Unique',
+                        character_length: 'Max Length',
                         comments: 'Comments',
                         no_comments: 'No comments',
                         delete_field: 'Delete Field',
@@ -207,6 +206,52 @@ export const en = {
                     description: 'Create a view to get started',
                 },
             },
+
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -233,7 +278,7 @@ export const en = {
                 title: 'Import your Database',
                 database_edition: 'Database Edition:',
                 step_1: 'Run this script in your database:',
-                step_2: 'Paste the script result here:',
+                step_2: 'Paste the script result into this modal →',
                 script_results_placeholder: 'Script results here...',
                 ssms_instructions: {
                     button_text: 'SSMS Instructions',
@@ -327,6 +372,11 @@ export const en = {
             scale_4x: '4x',
             cancel: 'Cancel',
             export: 'Export',
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -360,7 +410,7 @@ export const en = {
             error: {
                 title: 'Error exporting diagram',
                 description:
-                    'Something went wrong. Need help? chartdb.io@gmail.com',
+                    'Something went wrong. Need help? support@chartdb.io',
             },
         },
 
@@ -372,7 +422,7 @@ export const en = {
             error: {
                 title: 'Error importing diagram',
                 description:
-                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? chartdb.io@gmail.com',
+                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? support@chartdb.io',
             },
         },
 
@@ -399,6 +449,7 @@ export const en = {
         canvas_context_menu: {
             new_table: 'New Table',
             new_relationship: 'New Relationship',
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

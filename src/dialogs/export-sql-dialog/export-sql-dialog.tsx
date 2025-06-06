@@ -87,7 +87,12 @@ export const ExportSQLDialog: React.FC<ExportSQLDialogProps> = ({
         };
 
         if (targetDatabaseType === DatabaseType.GENERIC) {
-            return Promise.resolve(exportBaseSQL(filteredDiagram));
+            return Promise.resolve(
+                exportBaseSQL({
+                    diagram: filteredDiagram,
+                    targetDatabaseType,
+                })
+            );
         } else {
             return exportSQL(filteredDiagram, targetDatabaseType, {
                 stream: true,
@@ -135,7 +140,7 @@ export const ExportSQLDialog: React.FC<ExportSQLDialogProps> = ({
                             components={[
                                 <a
                                     key={0}
-                                    href="mailto:chartdb.io@gmail.com"
+                                    href="mailto:support@chartdb.io"
                                     target="_blank"
                                     className="text-pink-600 hover:underline"
                                     rel="noreferrer"

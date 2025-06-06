@@ -41,9 +41,7 @@ export const uk: LanguageTranslation = {
             help: {
                 help: 'Довідка',
                 docs_website: 'Документація',
-                visit_website: 'Сайт ChartDB',
                 join_discord: 'Приєднуйтесь до нас в Діскорд',
-                schedule_a_call: 'Забронювати зустріч!',
             },
         },
 
@@ -150,6 +148,8 @@ export const uk: LanguageTranslation = {
                         comments: 'Коментарі',
                         no_comments: 'Немає коментарів',
                         delete_field: 'Видалити поле',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'Атрибути індексу',
@@ -209,6 +209,53 @@ export const uk: LanguageTranslation = {
                     description: 'Створіть подання, щоб почати',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -235,7 +282,7 @@ export const uk: LanguageTranslation = {
                 title: 'Імпортуйте вашу базу даних',
                 database_edition: 'Варіант бази даних:',
                 step_1: 'Запустіть цей сценарій у своїй базі даних:',
-                step_2: 'Вставте сюди результат сценарію:',
+                step_2: 'Вставте сюди результат сценарію →',
                 script_results_placeholder: 'Результати сценарію має бути тут…',
                 ssms_instructions: {
                     button_text: 'SSMS Інструкції',
@@ -330,6 +377,12 @@ export const uk: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'Скасувати',
             export: 'Експортувати',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -362,7 +415,7 @@ export const uk: LanguageTranslation = {
             error: {
                 title: 'Помилка експорут діаграми',
                 description:
-                    'Щось пішло не так. Потрібна допомога? chartdb.io@gmail.com',
+                    'Щось пішло не так. Потрібна допомога? support@chartdb.io',
             },
         },
         import_diagram_dialog: {
@@ -373,7 +426,7 @@ export const uk: LanguageTranslation = {
             error: {
                 title: 'Помилка імпорту діаграми',
                 description:
-                    'JSON діаграми є неправильним. Будь ласка, перевірте JSON і спробуйте ще раз. Потрібна допомога? chartdb.io@gmail.com',
+                    'JSON діаграми є неправильним. Будь ласка, перевірте JSON і спробуйте ще раз. Потрібна допомога? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -400,6 +453,8 @@ export const uk: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'Нова таблиця',
             new_relationship: 'Новий звʼязок',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

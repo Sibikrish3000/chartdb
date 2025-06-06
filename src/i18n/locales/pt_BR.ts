@@ -43,9 +43,7 @@ export const pt_BR: LanguageTranslation = {
             help: {
                 help: 'Ajuda',
                 docs_website: 'Documentação',
-                visit_website: 'Visitar ChartDB',
                 join_discord: 'Junte-se a nós no Discord',
-                schedule_a_call: 'Fale Conosco!',
             },
         },
 
@@ -152,6 +150,8 @@ export const pt_BR: LanguageTranslation = {
                         comments: 'Comentários',
                         no_comments: 'Sem comentários',
                         delete_field: 'Excluir Campo',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'Atributos do Índice',
@@ -211,6 +211,53 @@ export const pt_BR: LanguageTranslation = {
                     description: 'Crie uma visualização para começar',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -237,7 +284,7 @@ export const pt_BR: LanguageTranslation = {
                 title: 'Importe seu Banco de Dados',
                 database_edition: 'Edição do Banco de Dados:',
                 step_1: 'Execute este script no seu banco de dados:',
-                step_2: 'Cole o resultado do script aqui:',
+                step_2: 'Cole o resultado do script aqui →',
                 script_results_placeholder: 'Resultados do script aqui...',
                 ssms_instructions: {
                     button_text: 'Instruções do SSMS',
@@ -332,6 +379,12 @@ export const pt_BR: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'Cancelar',
             export: 'Exportar',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -366,7 +419,7 @@ export const pt_BR: LanguageTranslation = {
             error: {
                 title: 'Error exporting diagram',
                 description:
-                    'Something went wrong. Need help? chartdb.io@gmail.com',
+                    'Something went wrong. Need help? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -378,7 +431,7 @@ export const pt_BR: LanguageTranslation = {
             error: {
                 title: 'Error importing diagram',
                 description:
-                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? chartdb.io@gmail.com',
+                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -405,6 +458,8 @@ export const pt_BR: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'Nova Tabela',
             new_relationship: 'Novo Relacionamento',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

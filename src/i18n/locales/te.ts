@@ -43,9 +43,7 @@ export const te: LanguageTranslation = {
             help: {
                 help: 'సహాయం',
                 docs_website: 'డాక్యుమెంటేషన్',
-                visit_website: 'ChartDB సందర్శించండి',
                 join_discord: 'డిస్కార్డ్‌లో మా నుంచి చేరండి',
-                schedule_a_call: 'మాతో మాట్లాడండి!',
             },
         },
 
@@ -152,6 +150,8 @@ export const te: LanguageTranslation = {
                         comments: 'వ్యాఖ్యలు',
                         no_comments: 'వ్యాఖ్యలు లేవు',
                         delete_field: 'ఫీల్డ్ తొలగించు',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'ఇండెక్స్ గుణాలు',
@@ -212,6 +212,53 @@ export const te: LanguageTranslation = {
                     description: 'ప్రారంభించడానికి ఒక వీక్షణ సృష్టించండి',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -238,7 +285,7 @@ export const te: LanguageTranslation = {
                 title: 'మీ డేటాబేస్‌ను దిగుమతి చేసుకోండి',
                 database_edition: 'డేటాబేస్ ఎడిషన్:',
                 step_1: 'ఈ స్క్రిప్ట్ను మీ డేటాబేస్‌లో అమలు చేయండి:',
-                step_2: 'స్క్రిప్ట్ ఫలితాన్ని ఇక్కడ పేస్ట్ చేయండి:',
+                step_2: 'స్క్రిప్ట్ ఫలితాన్ని ఇక్కడ పేస్ట్ చేయండి →',
                 script_results_placeholder: 'స్క్రిప్ట్ ఫలితాలు ఇక్కడ...',
                 ssms_instructions: {
                     button_text: 'SSMS సూచనల్ని చూపించు',
@@ -333,6 +380,12 @@ export const te: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'రద్దు',
             export: 'ఎగుమతి',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -368,7 +421,7 @@ export const te: LanguageTranslation = {
             error: {
                 title: 'Error exporting diagram',
                 description:
-                    'Something went wrong. Need help? chartdb.io@gmail.com',
+                    'Something went wrong. Need help? support@chartdb.io',
             },
         },
 
@@ -381,7 +434,7 @@ export const te: LanguageTranslation = {
             error: {
                 title: 'Error importing diagram',
                 description:
-                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? chartdb.io@gmail.com',
+                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -409,6 +462,8 @@ export const te: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'కొత్త పట్టిక',
             new_relationship: 'కొత్త సంబంధం',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

@@ -4,6 +4,8 @@ import type { DBField } from '@/lib/domain/db-field';
 import type { DBIndex } from '@/lib/domain/db-index';
 import type { DBRelationship } from '@/lib/domain/db-relationship';
 import type { DBDependency } from '@/lib/domain/db-dependency';
+import type { Area } from '@/lib/domain/area';
+import type { DBCustomType } from '@/lib/domain/db-custom-type';
 
 type Action = keyof ChartDBContext;
 
@@ -123,6 +125,42 @@ type RedoUndoActionRemoveDependencies = RedoUndoActionBase<
     { dependencies: DBDependency[] }
 >;
 
+type RedoUndoActionAddAreas = RedoUndoActionBase<
+    'addAreas',
+    { areas: Area[] },
+    { areaIds: string[] }
+>;
+
+type RedoUndoActionUpdateArea = RedoUndoActionBase<
+    'updateArea',
+    { areaId: string; area: Partial<Area> },
+    { areaId: string; area: Partial<Area> }
+>;
+
+type RedoUndoActionRemoveAreas = RedoUndoActionBase<
+    'removeAreas',
+    { areaIds: string[] },
+    { areas: Area[] }
+>;
+
+type RedoUndoActionAddCustomTypes = RedoUndoActionBase<
+    'addCustomTypes',
+    { customTypes: DBCustomType[] },
+    { customTypeIds: string[] }
+>;
+
+type RedoUndoActionUpdateCustomType = RedoUndoActionBase<
+    'updateCustomType',
+    { customTypeId: string; customType: Partial<DBCustomType> },
+    { customTypeId: string; customType: Partial<DBCustomType> }
+>;
+
+type RedoUndoActionRemoveCustomTypes = RedoUndoActionBase<
+    'removeCustomTypes',
+    { customTypeIds: string[] },
+    { customTypes: DBCustomType[] }
+>;
+
 export type RedoUndoAction =
     | RedoUndoActionAddTables
     | RedoUndoActionRemoveTables
@@ -140,7 +178,13 @@ export type RedoUndoAction =
     | RedoUndoActionRemoveRelationships
     | RedoUndoActionAddDependencies
     | RedoUndoActionUpdateDependency
-    | RedoUndoActionRemoveDependencies;
+    | RedoUndoActionRemoveDependencies
+    | RedoUndoActionAddAreas
+    | RedoUndoActionUpdateArea
+    | RedoUndoActionRemoveAreas
+    | RedoUndoActionAddCustomTypes
+    | RedoUndoActionUpdateCustomType
+    | RedoUndoActionRemoveCustomTypes;
 
 export type RedoActionData<T extends Action> = Extract<
     RedoUndoAction,

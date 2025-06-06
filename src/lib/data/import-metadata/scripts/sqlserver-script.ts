@@ -1,5 +1,10 @@
 import { DatabaseEdition } from '@/lib/domain/database-edition';
 
+const withExtras = false;
+
+const withDefault = `'"' + STRING_ESCAPE(COALESCE(REPLACE(CAST(cols.COLUMN_DEFAULT AS NVARCHAR(MAX)), '"', '\\"'), ''), 'json') + '"'`;
+const withoutDefault = `'""'`;
+
 const sqlServerQuery = `${`/* SQL Server 2017 and above edition (14.0, 15.0, 16.0, 17.0)*/`}
 WITH fk_info AS (
     SELECT
@@ -68,12 +73,12 @@ cols AS (
                         '", "name": "' + STRING_ESCAPE(COALESCE(REPLACE(cols.COLUMN_NAME, '"', ''), ''), 'json') +
                         '", "ordinal_position": ' + CAST(cols.ORDINAL_POSITION AS NVARCHAR(MAX)) +
                         ', "type": "' + STRING_ESCAPE(LOWER(cols.DATA_TYPE), 'json') +
-                        '", "character_maximum_length": ' +
+                        '", "character_maximum_length": "' +
                             CASE
                                 WHEN cols.CHARACTER_MAXIMUM_LENGTH IS NULL THEN 'null'
                                 ELSE CAST(cols.CHARACTER_MAXIMUM_LENGTH AS NVARCHAR(MAX))
                             END +
-                        ', "precision": ' +
+                        '", "precision": ' +
                             CASE
                                 WHEN cols.DATA_TYPE IN ('numeric', 'decimal')
                                 THEN '{"precision":' + COALESCE(CAST(cols.NUMERIC_PRECISION AS NVARCHAR(MAX)), 'null') +
@@ -81,8 +86,7 @@ cols AS (
                                 ELSE 'null'
                             END +
                         ', "nullable": ' + CASE WHEN cols.IS_NULLABLE = 'YES' THEN 'true' ELSE 'false' END +
-                        ', "default": ' +
-                            '"' + STRING_ESCAPE(COALESCE(REPLACE(CAST(cols.COLUMN_DEFAULT AS NVARCHAR(MAX)), '"', '\\"'), ''), 'json') + '"' +
+                        ', "default": ' + ${withExtras ? withDefault : withoutDefault} +
                         ', "collation": ' + CASE
                             WHEN cols.COLLATION_NAME IS NULL THEN 'null'
                             ELSE '"' + STRING_ESCAPE(cols.COLLATION_NAME, 'json') + '"'
@@ -166,15 +170,7 @@ views AS (
                 JSON_QUERY(N'{
                     "schema": "' + STRING_ESCAPE(COALESCE(REPLACE(s.name, '"', ''), ''), 'json') +
                     '", "view_name": "' + STRING_ESCAPE(COALESCE(REPLACE(v.name, '"', ''), ''), 'json') +
-                    '", "view_definition": "' +
-                    STRING_ESCAPE(
-                        CAST(
-                            '' AS XML
-                        ).value(
-                            'xs:base64Binary(sql:column("DefinitionBinary"))',
-                            'VARCHAR(MAX)'
-                        ), 'json') +
-                    N'"}') COLLATE DATABASE_DEFAULT
+                    '", "view_definition": ""}') COLLATE DATABASE_DEFAULT
                 ), N','
         ) + N']' AS all_views_json
     FROM sys.views v
@@ -270,12 +266,12 @@ cols AS (
                                 '", "name": "' + STRING_ESCAPE(COALESCE(REPLACE(cols.COLUMN_NAME, '"', ''), ''), 'json') +
                                 '", "ordinal_position": ' + CAST(cols.ORDINAL_POSITION AS NVARCHAR(MAX)) +
                                 ', "type": "' + STRING_ESCAPE(LOWER(cols.DATA_TYPE), 'json') +
-                                '", "character_maximum_length": ' +
+                                '", "character_maximum_length": "' +
                                     CASE
                                         WHEN cols.CHARACTER_MAXIMUM_LENGTH IS NULL THEN 'null'
                                         ELSE CAST(cols.CHARACTER_MAXIMUM_LENGTH AS NVARCHAR(MAX))
                                     END +
-                                ', "precision": ' +
+                                '", "precision": ' +
                                     CASE
                                         WHEN cols.DATA_TYPE IN ('numeric', 'decimal')
                                         THEN '{"precision":' + COALESCE(CAST(cols.NUMERIC_PRECISION AS NVARCHAR(MAX)), 'null') +
@@ -283,8 +279,7 @@ cols AS (
                                         ELSE 'null'
                                     END +
                                 ', "nullable": ' + CASE WHEN cols.IS_NULLABLE = 'YES' THEN 'true' ELSE 'false' END +
-                                ', "default": ' +
-                                    '"' + STRING_ESCAPE(COALESCE(REPLACE(CAST(cols.COLUMN_DEFAULT AS NVARCHAR(MAX)), '"', '\\"'), ''), 'json') + '"' +
+                                ', "default": ' + ${withExtras ? withDefault : withoutDefault} +
                                 ', "collation": ' +
                                     CASE
                                         WHEN cols.COLLATION_NAME IS NULL THEN 'null'
@@ -385,12 +380,7 @@ views AS (
                                 N'{
                                 "schema": "' + STRING_ESCAPE(COALESCE(REPLACE(s.name, '"', ''), ''), 'json') +
                                 '", "view_name": "' + STRING_ESCAPE(COALESCE(REPLACE(v.name, '"', ''), ''), 'json') +
-                                '", "view_definition": "' +
-                                CAST(
-                                    (
-                                        SELECT CAST(OBJECT_DEFINITION(v.object_id) AS VARBINARY(MAX)) FOR XML PATH('')
-                                    ) AS NVARCHAR(MAX)
-                                ) + N'"}'
+                                '", "view_definition": ""}'
                             )
                         )
                         FROM

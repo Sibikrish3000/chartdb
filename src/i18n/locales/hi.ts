@@ -42,9 +42,7 @@ export const hi: LanguageTranslation = {
             help: {
                 help: 'मदद',
                 docs_website: 'દસ્તાવેજીકરણ',
-                visit_website: 'ChartDB वेबसाइट पर जाएँ',
                 join_discord: 'हमसे Discord पर जुड़ें',
-                schedule_a_call: 'हमसे बात करें!',
             },
         },
 
@@ -152,6 +150,8 @@ export const hi: LanguageTranslation = {
                         comments: 'टिप्पणियाँ',
                         no_comments: 'कोई टिप्पणी नहीं',
                         delete_field: 'फ़ील्ड हटाएँ',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'सूचकांक विशेषताएँ',
@@ -212,6 +212,53 @@ export const hi: LanguageTranslation = {
                     description: 'इस अनुभाग में कोई निर्भरता उपलब्ध नहीं है।',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -238,7 +285,7 @@ export const hi: LanguageTranslation = {
                 title: 'अपना डेटाबेस आयात करें',
                 database_edition: 'डेटाबेस संस्करण:',
                 step_1: 'अपने डेटाबेस में यह स्क्रिप्ट चलाएँ:',
-                step_2: 'यहाँ स्क्रिप्ट का परिणाम पेस्ट करें:',
+                step_2: 'यहाँ स्क्रिप्ट का परिणाम पेस्ट करें →',
                 script_results_placeholder: 'स्क्रिप्ट के परिणाम यहाँ...',
                 ssms_instructions: {
                     button_text: 'SSMS निर्देश',
@@ -334,6 +381,12 @@ export const hi: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'रद्द करें',
             export: 'निर्यात करें',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -368,7 +421,7 @@ export const hi: LanguageTranslation = {
             error: {
                 title: 'Error exporting diagram',
                 description:
-                    'Something went wrong. Need help? chartdb.io@gmail.com',
+                    'Something went wrong. Need help? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -380,7 +433,7 @@ export const hi: LanguageTranslation = {
             error: {
                 title: 'Error importing diagram',
                 description:
-                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? chartdb.io@gmail.com',
+                    'The diagram JSON is invalid. Please check the JSON and try again. Need help? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -407,6 +460,8 @@ export const hi: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'नई तालिका',
             new_relationship: 'नया संबंध',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

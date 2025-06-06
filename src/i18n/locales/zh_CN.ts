@@ -42,9 +42,7 @@ export const zh_CN: LanguageTranslation = {
             help: {
                 help: '帮助',
                 docs_website: '文档',
-                visit_website: '访问 ChartDB',
                 join_discord: '在 Discord 上加入我们',
-                schedule_a_call: '和我们交流！',
             },
         },
 
@@ -148,6 +146,8 @@ export const zh_CN: LanguageTranslation = {
                         comments: '注释',
                         no_comments: '空',
                         delete_field: '删除字段',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: '索引属性',
@@ -207,6 +207,53 @@ export const zh_CN: LanguageTranslation = {
                     description: '创建视图以开始',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -232,7 +279,7 @@ export const zh_CN: LanguageTranslation = {
                 title: '导入您的数据库',
                 database_edition: '数据库类型：',
                 step_1: '在您的数据库中执行以下脚本：',
-                step_2: '将结果粘贴于此：',
+                step_2: '将结果粘贴于此 →',
                 script_results_placeholder: '结果...',
                 ssms_instructions: {
                     button_text: 'SSMS 说明',
@@ -326,6 +373,12 @@ export const zh_CN: LanguageTranslation = {
             scale_4x: '4x',
             cancel: '取消',
             export: '导出',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -358,7 +411,7 @@ export const zh_CN: LanguageTranslation = {
             error: {
                 title: 'Error exporting diagram',
                 description:
-                    'Something went wrong. Need help? chartdb.io@gmail.com',
+                    'Something went wrong. Need help? support@chartdb.io',
             },
         },
 
@@ -370,7 +423,7 @@ export const zh_CN: LanguageTranslation = {
             error: {
                 title: '导入关系图时出错',
                 description:
-                    '关系图 JSON 无效，请检查 JSON 后重试。需要帮助？ 联系 chartdb.io@gmail.com',
+                    '关系图 JSON 无效，请检查 JSON 后重试。需要帮助？ 联系 support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -397,6 +450,8 @@ export const zh_CN: LanguageTranslation = {
         canvas_context_menu: {
             new_table: '新建表',
             new_relationship: '新建关系',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

@@ -33,6 +33,12 @@ export const HistoryProvider: React.FC<React.PropsWithChildren> = ({
         removeIndex,
         updateIndex,
         removeRelationships,
+        addAreas,
+        removeAreas,
+        updateArea,
+        addCustomTypes,
+        removeCustomTypes,
+        updateCustomType,
     } = useChartDB();
 
     const redoActionHandlers = useMemo(
@@ -107,6 +113,28 @@ export const HistoryProvider: React.FC<React.PropsWithChildren> = ({
                     updateHistory: false,
                 });
             },
+            addAreas: ({ redoData: { areas } }) => {
+                return addAreas(areas, { updateHistory: false });
+            },
+            removeAreas: ({ redoData: { areaIds } }) => {
+                return removeAreas(areaIds, { updateHistory: false });
+            },
+            updateArea: ({ redoData: { areaId, area } }) => {
+                return updateArea(areaId, area, { updateHistory: false });
+            },
+            addCustomTypes: ({ redoData: { customTypes } }) => {
+                return addCustomTypes(customTypes, { updateHistory: false });
+            },
+            removeCustomTypes: ({ redoData: { customTypeIds } }) => {
+                return removeCustomTypes(customTypeIds, {
+                    updateHistory: false,
+                });
+            },
+            updateCustomType: ({ redoData: { customTypeId, customType } }) => {
+                return updateCustomType(customTypeId, customType, {
+                    updateHistory: false,
+                });
+            },
         }),
         [
             addTables,
@@ -126,6 +154,12 @@ export const HistoryProvider: React.FC<React.PropsWithChildren> = ({
             addDependencies,
             removeDependencies,
             updateDependency,
+            addAreas,
+            removeAreas,
+            updateArea,
+            addCustomTypes,
+            removeCustomTypes,
+            updateCustomType,
         ]
     );
 
@@ -215,6 +249,28 @@ export const HistoryProvider: React.FC<React.PropsWithChildren> = ({
                     updateHistory: false,
                 });
             },
+            addAreas: ({ undoData: { areaIds } }) => {
+                return removeAreas(areaIds, { updateHistory: false });
+            },
+            removeAreas: ({ undoData: { areas } }) => {
+                return addAreas(areas, { updateHistory: false });
+            },
+            updateArea: ({ undoData: { areaId, area } }) => {
+                return updateArea(areaId, area, { updateHistory: false });
+            },
+            addCustomTypes: ({ undoData: { customTypeIds } }) => {
+                return removeCustomTypes(customTypeIds, {
+                    updateHistory: false,
+                });
+            },
+            removeCustomTypes: ({ undoData: { customTypes } }) => {
+                return addCustomTypes(customTypes, { updateHistory: false });
+            },
+            updateCustomType: ({ undoData: { customTypeId, customType } }) => {
+                return updateCustomType(customTypeId, customType, {
+                    updateHistory: false,
+                });
+            },
         }),
         [
             addTables,
@@ -234,6 +290,12 @@ export const HistoryProvider: React.FC<React.PropsWithChildren> = ({
             addDependencies,
             removeDependencies,
             updateDependency,
+            addAreas,
+            removeAreas,
+            updateArea,
+            addCustomTypes,
+            removeCustomTypes,
+            updateCustomType,
         ]
     );
 

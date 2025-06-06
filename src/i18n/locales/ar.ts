@@ -42,9 +42,7 @@ export const ar: LanguageTranslation = {
             help: {
                 help: 'مساعدة',
                 docs_website: 'الوثائق',
-                visit_website: 'ChartDB قم بزيارة',
-                join_discord: 'Discord انضم إلينا على',
-                schedule_a_call: '!تحدث معنا',
+                join_discord: 'انضم إلينا على Discord',
             },
         },
 
@@ -151,6 +149,8 @@ export const ar: LanguageTranslation = {
                         comments: 'تعليقات',
                         no_comments: 'لا يوجد تعليقات',
                         delete_field: 'حذف الحقل',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'خصائص الفهرس',
@@ -210,6 +210,54 @@ export const ar: LanguageTranslation = {
                     description: 'إنشاء اعتماد للبدء',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -236,7 +284,7 @@ export const ar: LanguageTranslation = {
                 title: 'إسترد قاعدة بياناتك',
                 database_edition: ':إصدار قاعدة البيانات',
                 step_1: ':قم بتشغيل هذا البرنامج النصي في قاعدة بياناتك',
-                step_2: ':إلصق نتيجة البرنامج النصي هنا',
+                step_2: ':إلصق نتيجة البرنامج النصي هنا →',
                 script_results_placeholder: '...نتيجة البرنامج النصي هنا',
                 ssms_instructions: {
                     button_text: 'SSMS تعليمات',
@@ -330,6 +378,12 @@ export const ar: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'إلغاء',
             export: 'تصدير',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -362,7 +416,7 @@ export const ar: LanguageTranslation = {
             error: {
                 title: 'حدث خطأ أثناء التصدير',
                 description:
-                    'chartdb.io@gmail.com حدث خطأ ما. هل تحتاج إلى مساعدة؟',
+                    'support@chartdb.io حدث خطأ ما. هل تحتاج إلى مساعدة؟',
             },
         },
         import_diagram_dialog: {
@@ -373,7 +427,7 @@ export const ar: LanguageTranslation = {
             error: {
                 title: 'حدث خطأ أثناء الاستيراد',
                 description:
-                    'chartdb.io@gmail.com و المحاولة مرة اخرى. هل تحتاج إلى المساعدة؟ JSON غير صالح. يرجى التحقق من JSON الرسم البياني',
+                    'support@chartdb.io و المحاولة مرة اخرى. هل تحتاج إلى المساعدة؟ JSON غير صالح. يرجى التحقق من JSON الرسم البياني',
             },
         },
         import_dbml_dialog: {
@@ -400,6 +454,8 @@ export const ar: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'جدول جديد',
             new_relationship: 'علاقة جديدة',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

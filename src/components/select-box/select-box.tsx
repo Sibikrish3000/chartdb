@@ -24,12 +24,20 @@ export interface SelectBoxOption {
     value: string;
     label: string;
     description?: string;
+    regex?: string;
+    extractRegex?: RegExp;
+    group?: string;
 }
 
 export interface SelectBoxProps {
     options: SelectBoxOption[];
     value?: string[] | string;
-    onChange?: (values: string[] | string) => void;
+    valueSuffix?: string;
+    optionSuffix?: (option: SelectBoxOption) => string;
+    onChange?: (
+        values: string[] | string,
+        regexMatches?: string[] | string
+    ) => void;
     placeholder?: string;
     inputPlaceholder?: string;
     emptyPlaceholder?: string;
@@ -44,6 +52,7 @@ export interface SelectBoxProps {
     disabled?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
+    popoverClassName?: string;
 }
 
 export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
@@ -55,10 +64,12 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
             className,
             options,
             value,
+            valueSuffix,
             onChange,
             multiple,
             oneLine,
             selectAll,
+            optionSuffix,
             deselectAll,
             clearText,
             showClear,
@@ -66,6 +77,7 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
             disabled,
             open,
             onOpenChange: setOpen,
+            popoverClassName,
         },
         ref
     ) => {
@@ -86,7 +98,7 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
         );
 
         const handleSelect = React.useCallback(
-            (selectedValue: string) => {
+            (selectedValue: string, regexMatches?: string[]) => {
                 if (multiple) {
                     const newValue =
                         value?.includes(selectedValue) && Array.isArray(value)
@@ -94,7 +106,7 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
                             : [...(value ?? []), selectedValue];
                     onChange?.(newValue);
                 } else {
-                    onChange?.(selectedValue);
+                    onChange?.(selectedValue, regexMatches);
                     setIsOpen(false);
                 }
             },
@@ -166,6 +178,101 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
             [isOpen, onOpenChange]
         );
 
+        const groups = React.useMemo(
+            () =>
+                options.reduce(
+                    (acc, option) => {
+                        if (option.group) {
+                            if (!acc[option.group]) {
+                                acc[option.group] = [];
+                            }
+                            acc[option.group].push(option);
+                        } else {
+                            if (!acc['default']) {
+                                acc['default'] = [];
+                            }
+                            acc['default'].push(option);
+                        }
+                        return acc;
+                    },
+                    {} as Record<string, SelectBoxOption[]>
+                ),
+            [options]
+        );
+
+        const hasGroups = React.useMemo(
+            () =>
+                Object.keys(groups).filter((group) => group !== 'default')
+                    .length > 0,
+            [groups]
+        );
+
+        const renderOption = React.useCallback(
+            (option: SelectBoxOption) => {
+                const isSelected =
+                    Array.isArray(value) && value.includes(option.value);
+
+                const isRegexMatch =
+                    option.regex && new RegExp(option.regex)?.test(searchTerm);
+
+                const matches = option.extractRegex
+                    ? searchTerm.match(option.extractRegex)
+                    : undefined;
+
+                return (
+                    <CommandItem
+                        className="flex items-center"
+                        key={option.value}
+                        keywords={option.regex ? [option.regex] : undefined}
+                        onSelect={() =>
+                            handleSelect(
+                                option.value,
+                                matches?.map((match) => match.toString())
+                            )
+                        }
+                    >
+                        {multiple && (
+                            <div
+                                className={cn(
+                                    'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
+                                    isSelected
+                                        ? 'bg-primary text-primary-foreground'
+                                        : 'opacity-50 [&_svg]:invisible'
+                                )}
+                            >
+                                <CheckIcon />
+                            </div>
+                        )}
+                        <div className="flex flex-1 items-center truncate">
+                            <span>
+                                {isRegexMatch ? searchTerm : option.label}
+                                {!isRegexMatch && optionSuffix
+                                    ? optionSuffix(option)
+                                    : ''}
+                            </span>
+                            {option.description && (
+                                <span className="ml-1 w-0 flex-1 truncate text-xs text-muted-foreground">
+                                    {option.description}
+                                </span>
+                            )}
+                        </div>
+                        {((!multiple && option.value === value) ||
+                            isRegexMatch) && (
+                            <CheckIcon
+                                className={cn(
+                                    'ml-auto',
+                                    option.value === value
+                                        ? 'opacity-100'
+                                        : 'opacity-0'
+                                )}
+                            />
+                        )}
+                    </CommandItem>
+                );
+            },
+            [value, multiple, searchTerm, handleSelect, optionSuffix]
+        );
+
         return (
             <Popover open={isOpen} onOpenChange={onOpenChange} modal={true}>
                 <PopoverTrigger asChild tabIndex={0} onKeyDown={handleKeyDown}>
@@ -199,6 +306,7 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
                                                 (opt) => opt.value === value
                                             )?.label
                                         }
+                                        {valueSuffix ? valueSuffix : ''}
                                     </div>
                                 )
                             ) : (
@@ -235,15 +343,29 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
                     </div>
                 </PopoverTrigger>
                 <PopoverContent
-                    className="w-fit min-w-[var(--radix-popover-trigger-width)] p-0"
+                    className={cn(
+                        'w-fit min-w-[var(--radix-popover-trigger-width)] p-0',
+                        popoverClassName
+                    )}
                     align="center"
                 >
                     <Command
-                        filter={(value, search) =>
-                            value.toLowerCase().includes(search.toLowerCase())
+                        filter={(value, search, keywords) => {
+                            if (
+                                keywords?.length &&
+                                keywords.some((keyword) =>
+                                    new RegExp(keyword).test(search)
+                                )
+                            ) {
+                                return 1;
+                            }
+
+                            return value
+                                .toLowerCase()
+                                .includes(search.toLowerCase())
                                 ? 1
-                                : 0
-                        }
+                                : 0;
+                        }}
                     >
                         <div className="relative">
                             <CommandInput
@@ -296,65 +418,22 @@ export const SelectBox = React.forwardRef<HTMLInputElement, SelectBoxProps>(
 
                         <ScrollArea>
                             <div className="max-h-64 w-full">
-                                <CommandGroup>
-                                    <CommandList className="max-h-fit w-full">
-                                        {options.map((option) => {
-                                            const isSelected =
-                                                Array.isArray(value) &&
-                                                value.includes(option.value);
-                                            return (
-                                                <CommandItem
-                                                    className="flex items-center"
-                                                    key={option.value}
-                                                    // value={option.value}
-                                                    onSelect={() =>
-                                                        handleSelect(
-                                                            option.value
-                                                        )
-                                                    }
-                                                >
-                                                    {multiple && (
-                                                        <div
-                                                            className={cn(
-                                                                'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
-                                                                isSelected
-                                                                    ? 'bg-primary text-primary-foreground'
-                                                                    : 'opacity-50 [&_svg]:invisible'
-                                                            )}
-                                                        >
-                                                            <CheckIcon />
-                                                        </div>
-                                                    )}
-                                                    <div className="flex items-center truncate">
-                                                        <span>
-                                                            {option.label}
-                                                        </span>
-                                                        {option.description && (
-                                                            <span className="ml-1 text-xs text-muted-foreground">
-                                                                {
-                                                                    option.description
-                                                                }
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                    {!multiple &&
-                                                        option.value ===
-                                                            value && (
-                                                            <CheckIcon
-                                                                className={cn(
-                                                                    'ml-auto',
-                                                                    option.value ===
-                                                                        value
-                                                                        ? 'opacity-100'
-                                                                        : 'opacity-0'
-                                                                )}
-                                                            />
-                                                        )}
-                                                </CommandItem>
-                                            );
-                                        })}
-                                    </CommandList>
-                                </CommandGroup>
+                                <CommandList className="max-h-fit w-full">
+                                    {hasGroups
+                                        ? Object.entries(groups).map(
+                                              ([groupName, groupOptions]) => (
+                                                  <CommandGroup
+                                                      key={groupName}
+                                                      heading={groupName}
+                                                  >
+                                                      {groupOptions.map(
+                                                          renderOption
+                                                      )}
+                                                  </CommandGroup>
+                                              )
+                                          )
+                                        : options.map(renderOption)}
+                                </CommandList>
                             </div>
                         </ScrollArea>
                     </Command>

@@ -43,9 +43,7 @@ export const bn: LanguageTranslation = {
             help: {
                 help: 'সাহায্য',
                 docs_website: 'ডকুমেন্টেশন',
-                visit_website: 'ChartDB ওয়েবসাইটে যান',
                 join_discord: 'আমাদের Discord-এ যোগ দিন',
-                schedule_a_call: 'আমাদের সাথে কথা বলুন!',
             },
         },
 
@@ -152,6 +150,8 @@ export const bn: LanguageTranslation = {
                         comments: 'মন্তব্য',
                         no_comments: 'কোনো মন্তব্য নেই',
                         delete_field: 'ফিল্ড মুছুন',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'ইনডেক্স কর্ম',
@@ -211,6 +211,53 @@ export const bn: LanguageTranslation = {
                     description: 'এই অংশে কোনো নির্ভরতা উপলব্ধ নেই।',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -237,7 +284,7 @@ export const bn: LanguageTranslation = {
                 title: 'আপনার ডাটাবেস আমদানি করুন',
                 database_edition: 'ডাটাবেস সংস্করণ:',
                 step_1: 'আপনার ডাটাবেসে এই স্ক্রিপ্ট চালান:',
-                step_2: 'স্ক্রিপ্টের ফলাফল এখানে পেস্ট করুন:',
+                step_2: 'স্ক্রিপ্টের ফলাফল এখানে পেস্ট করুন →',
                 script_results_placeholder: 'স্ক্রিপ্টের ফলাফল এখানে...',
                 ssms_instructions: {
                     button_text: 'SSMS নির্দেশনা',
@@ -331,6 +378,12 @@ export const bn: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'বাতিল করুন',
             export: 'রপ্তানি করুন',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -365,7 +418,7 @@ export const bn: LanguageTranslation = {
             error: {
                 title: 'চিত্র রপ্তানিতে ত্রুটি',
                 description:
-                    'কিছু ভুল হয়েছে। সাহায্যের প্রয়োজন? chartdb.io@gmail.com-এ যোগাযোগ করুন।',
+                    'কিছু ভুল হয়েছে। সাহায্যের প্রয়োজন? support@chartdb.io-এ যোগাযোগ করুন।',
             },
         },
 
@@ -377,7 +430,7 @@ export const bn: LanguageTranslation = {
             error: {
                 title: 'চিত্র আমদানিতে ত্রুটি',
                 description:
-                    'ডায়াগ্রাম JSON অবৈধ। অনুগ্রহ করে JSON পরীক্ষা করুন এবং আবার চেষ্টা করুন। সাহায্যের প্রয়োজন? chartdb.io@gmail.com-এ যোগাযোগ করুন।',
+                    'ডায়াগ্রাম JSON অবৈধ। অনুগ্রহ করে JSON পরীক্ষা করুন এবং আবার চেষ্টা করুন। সাহায্যের প্রয়োজন? support@chartdb.io-এ যোগাযোগ করুন।',
             },
         },
         // TODO: Translate
@@ -404,6 +457,8 @@ export const bn: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'নতুন টেবিল',
             new_relationship: 'নতুন সম্পর্ক',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

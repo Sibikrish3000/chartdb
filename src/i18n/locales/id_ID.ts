@@ -41,10 +41,8 @@ export const id_ID: LanguageTranslation = {
             },
             help: {
                 help: 'Bantuan',
-                docs_website: 'દસ્તાવેજીકરણ',
-                visit_website: 'Kunjungi ChartDB',
+                docs_website: 'Dokumentasi',
                 join_discord: 'Bergabunglah di Discord kami',
-                schedule_a_call: 'Berbicara dengan kami!',
             },
         },
 
@@ -151,6 +149,8 @@ export const id_ID: LanguageTranslation = {
                         comments: 'Komentar',
                         no_comments: 'Tidak ada komentar',
                         delete_field: 'Hapus Kolom',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'Atribut Indeks',
@@ -210,6 +210,53 @@ export const id_ID: LanguageTranslation = {
                     description: 'Buat tampilan untuk memulai',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -236,7 +283,7 @@ export const id_ID: LanguageTranslation = {
                 title: 'Impor Database Anda',
                 database_edition: 'Edisi Database:',
                 step_1: 'Jalankan skrip ini di database Anda:',
-                step_2: 'Tempel hasil skrip di sini:',
+                step_2: 'Tempel hasil skrip di sini →',
                 script_results_placeholder: 'Hasil skrip di sini...',
                 ssms_instructions: {
                     button_text: 'Instruksi SSMS',
@@ -329,6 +376,12 @@ export const id_ID: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'Batal',
             export: 'Ekspor',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -363,7 +416,7 @@ export const id_ID: LanguageTranslation = {
             error: {
                 title: 'Error ekspor diagram',
                 description:
-                    'Sesuatu yang salah. Butuh bantuan? chartdb.io@gmail.com',
+                    'Sesuatu yang salah. Butuh bantuan? support@chartdb.io',
             },
         },
 
@@ -375,7 +428,7 @@ export const id_ID: LanguageTranslation = {
             error: {
                 title: 'Error impor diagram',
                 description:
-                    'Diagram JSON tidak valid. Silakan cek JSON dan coba lagi. Butuh bantuan? chartdb.io@gmail.com',
+                    'Diagram JSON tidak valid. Silakan cek JSON dan coba lagi. Butuh bantuan? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -403,6 +456,8 @@ export const id_ID: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'Tabel Baru',
             new_relationship: 'Hubungan Baru',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

@@ -24,28 +24,24 @@ export const ru: LanguageTranslation = {
                 view: 'Вид',
                 show_sidebar: 'Показать боковую панель',
                 hide_sidebar: 'Скрыть боковую панель',
-                hide_cardinality: 'Скрыть множественность связи',
-                show_cardinality: 'Показать множественность связи',
+                hide_cardinality: 'Скрыть виды связи',
+                show_cardinality: 'Показать виды связи',
                 zoom_on_scroll: 'Увеличение при прокрутке',
                 theme: 'Тема',
                 show_dependencies: 'Показать зависимости',
                 hide_dependencies: 'Скрыть зависимости',
-                // TODO: Translate
-                show_minimap: 'Show Mini Map',
-                hide_minimap: 'Hide Mini Map',
+                show_minimap: 'Показать мини-карту',
+                hide_minimap: 'Скрыть мини-карту',
             },
-            // TODO: Translate
             backup: {
-                backup: 'Backup',
-                export_diagram: 'Export Diagram',
-                restore_diagram: 'Restore Diagram',
+                backup: 'Бэкап',
+                export_diagram: 'Экспорт диаграммы',
+                restore_diagram: 'Восстановить диаграмму',
             },
             help: {
                 help: 'Помощь',
                 docs_website: 'Документация',
-                visit_website: 'Перейти на сайт ChartDB',
                 join_discord: 'Присоединиться к сообществу в Discord',
-                schedule_a_call: 'Поговорите с нами!',
             },
         },
 
@@ -125,17 +121,17 @@ export const ru: LanguageTranslation = {
                 add_table: 'Добавить таблицу',
                 filter: 'Фильтр',
                 collapse: 'Свернуть все',
-                // TODO: Translate
-                clear: 'Clear Filter',
-                no_results: 'No tables found matching your filter.',
-                // TODO: Translate
-                show_list: 'Show Table List',
-                show_dbml: 'Show DBML Editor',
+                clear: 'Очистить фильтр',
+
+                no_results:
+                    'Таблицы не найдены, соответствующие вашему фильтру.',
+                show_list: 'Переключиться на список таблиц',
+                show_dbml: 'Переключиться на редактор DBML',
 
                 table: {
                     fields: 'Поля',
-                    nullable: 'Может содержать NULL?',
-                    primary_key: 'Первичный ключ,',
+                    nullable: 'Может быть NULL?',
+                    primary_key: 'Первичный ключ',
                     indexes: 'Индексы',
                     comments: 'Комментарии',
                     no_comments: 'Нет комментария',
@@ -151,6 +147,7 @@ export const ru: LanguageTranslation = {
                         comments: 'Комментарии',
                         no_comments: 'Нет комментария',
                         delete_field: 'Удалить поле',
+                        character_length: 'Макс. длина',
                     },
                     index_actions: {
                         title: 'Атрибуты индекса',
@@ -163,7 +160,7 @@ export const ru: LanguageTranslation = {
                         change_schema: 'Изменить схему',
                         add_field: 'Добавить поле',
                         add_index: 'Добавить индекс',
-                        duplicate_table: 'Duplicate Table', // TODO: Translate
+                        duplicate_table: 'Создать копию',
                         delete_table: 'Удалить таблицу',
                     },
                 },
@@ -180,7 +177,7 @@ export const ru: LanguageTranslation = {
                 relationship: {
                     primary: 'Основная таблица',
                     foreign: 'Справочная таблица',
-                    cardinality: 'Тип множественности связи',
+                    cardinality: 'Тип множественной связи',
                     delete_relationship: 'Удалить',
                     relationship_actions: {
                         title: 'Действия',
@@ -210,6 +207,54 @@ export const ru: LanguageTranslation = {
                     description: 'Создайте представление, чтобы начать',
                 },
             },
+
+            areas_section: {
+                areas: 'Области',
+                add_area: 'Добавить область',
+                filter: 'Фильтр',
+                clear: 'Очистить фильтр',
+
+                no_results:
+                    'Области не найдены, соответствующие вашему фильтру.',
+
+                area: {
+                    area_actions: {
+                        title: 'Действия',
+                        edit_name: 'Изменить название',
+                        delete_area: 'Удалить область',
+                    },
+                },
+                empty_state: {
+                    title: 'Нет областей',
+                    description: 'Создайте область, чтобы начать',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -236,7 +281,7 @@ export const ru: LanguageTranslation = {
                 title: 'Импортируйте свою базу данных',
                 database_edition: 'Версия базы данных:',
                 step_1: 'Запустите этот скрипт в своей базе данных:',
-                step_2: 'Вставьте вывод скрипта сюда:',
+                step_2: 'Вставьте вывод скрипта сюда →',
                 script_results_placeholder: 'Вывод скрипта здесь...',
                 ssms_instructions: {
                     button_text: 'SSMS Инструкции',
@@ -331,6 +376,12 @@ export const ru: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'Отменить',
             export: 'Экспортировать',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -364,7 +415,7 @@ export const ru: LanguageTranslation = {
             error: {
                 title: 'Ошибка экспортирования диаграммы',
                 description:
-                    'Что-то пошло не так. Если вам нужна помощь, напишите нам: chartdb.io@gmail.com',
+                    'Что-то пошло не так. Если вам нужна помощь, напишите нам: support@chartdb.io',
             },
         },
         import_diagram_dialog: {
@@ -375,21 +426,22 @@ export const ru: LanguageTranslation = {
             error: {
                 title: 'Ошибка при импорте диаграммы',
                 description:
-                    'Код JSON диаграммы некорректен. Проверьте, пожалуйста, код и попробуйте снова. Проблема не решается? Напишите нам: chartdb.io@gmail.com',
+                    'Код JSON диаграммы некорректен. Проверьте, пожалуйста, код и попробуйте снова. Проблема не решается? Напишите нам: support@chartdb.io',
             },
         },
-        // TODO: Translate
         import_dbml_dialog: {
-            example_title: 'Import Example DBML',
-            title: 'Import DBML',
-            description: 'Import a database schema from DBML format.',
-            import: 'Import',
-            cancel: 'Cancel',
-            skip_and_empty: 'Skip & Empty',
-            show_example: 'Show Example',
+            example_title: 'Импорт DBML',
+            title: 'Импортировать DBML',
+            description: 'Импортировать схему базы данных из DBML формата.',
+            import: 'Импортировать',
+            cancel: 'Отмена',
+            skip_and_empty: 'Продолжить с пустой диаграммой',
+            show_example: 'Использовать эту схему',
+
             error: {
-                title: 'Error',
-                description: 'Failed to parse DBML. Please check the syntax.',
+                title: 'Ошибка',
+                description:
+                    'Ошибка парсинга DBML. Пожалуйста проверьте синтаксис.',
             },
         },
         relationship_type: {
@@ -402,13 +454,14 @@ export const ru: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'Создать таблицу',
             new_relationship: 'Создать отношение',
+            new_area: 'Новая область',
         },
 
         table_node_context_menu: {
             edit_table: 'Изменить таблицу',
-            duplicate_table: 'Duplicate Table', // TODO: Translate
+            duplicate_table: 'Создать копию',
             delete_table: 'Удалить таблицу',
-            add_relationship: 'Add Relationship', // TODO: Translate
+            add_relationship: 'Добавить связь',
         },
 
         copy_to_clipboard: 'Скопировать в буфер обмена',

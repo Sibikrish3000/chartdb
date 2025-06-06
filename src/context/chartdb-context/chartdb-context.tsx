@@ -10,6 +10,8 @@ import type { DatabaseEdition } from '@/lib/domain/database-edition';
 import type { DBSchema } from '@/lib/domain/db-schema';
 import type { DBDependency } from '@/lib/domain/db-dependency';
 import { EventEmitter } from 'ahooks/lib/useEventEmitter';
+import type { Area } from '@/lib/domain/area';
+import type { DBCustomType } from '@/lib/domain/db-custom-type';
 
 export type ChartDBEventType =
     | 'add_tables'
@@ -70,6 +72,8 @@ export interface ChartDBContext {
     schemas: DBSchema[];
     relationships: DBRelationship[];
     dependencies: DBDependency[];
+    areas: Area[];
+    customTypes: DBCustomType[];
     currentDiagram: Diagram;
     events: EventEmitter<ChartDBEvent>;
     readonly?: boolean;
@@ -221,6 +225,58 @@ export interface ChartDBContext {
         dependency: Partial<DBDependency>,
         options?: { updateHistory: boolean }
     ) => Promise<void>;
+
+    // Area operations
+    createArea: (attributes?: Partial<Omit<Area, 'id'>>) => Promise<Area>;
+    addArea: (
+        area: Area,
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    addAreas: (
+        areas: Area[],
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    getArea: (id: string) => Area | null;
+    removeArea: (
+        id: string,
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    removeAreas: (
+        ids: string[],
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    updateArea: (
+        id: string,
+        area: Partial<Area>,
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+
+    // Custom type operations
+    createCustomType: (
+        attributes?: Partial<Omit<DBCustomType, 'id'>>
+    ) => Promise<DBCustomType>;
+    addCustomType: (
+        customType: DBCustomType,
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    addCustomTypes: (
+        customTypes: DBCustomType[],
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    getCustomType: (id: string) => DBCustomType | null;
+    removeCustomType: (
+        id: string,
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    removeCustomTypes: (
+        ids: string[],
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
+    updateCustomType: (
+        id: string,
+        customType: Partial<DBCustomType>,
+        options?: { updateHistory: boolean }
+    ) => Promise<void>;
 }
 
 export const chartDBContext = createContext<ChartDBContext>({
@@ -230,6 +286,8 @@ export const chartDBContext = createContext<ChartDBContext>({
     tables: [],
     relationships: [],
     dependencies: [],
+    areas: [],
+    customTypes: [],
     schemas: [],
     filteredSchemas: [],
     filterSchemas: emptyFn,
@@ -296,4 +354,22 @@ export const chartDBContext = createContext<ChartDBContext>({
     removeDependencies: emptyFn,
     addDependencies: emptyFn,
     updateDependency: emptyFn,
+
+    // Area operations
+    createArea: emptyFn,
+    addArea: emptyFn,
+    addAreas: emptyFn,
+    getArea: emptyFn,
+    removeArea: emptyFn,
+    removeAreas: emptyFn,
+    updateArea: emptyFn,
+
+    // Custom type operations
+    createCustomType: emptyFn,
+    addCustomType: emptyFn,
+    addCustomTypes: emptyFn,
+    getCustomType: emptyFn,
+    removeCustomType: emptyFn,
+    removeCustomTypes: emptyFn,
+    updateCustomType: emptyFn,
 });

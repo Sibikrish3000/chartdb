@@ -7,10 +7,16 @@ import { mysqlDataTypes } from './mysql-data-types';
 import { postgresDataTypes } from './postgres-data-types';
 import { sqlServerDataTypes } from './sql-server-data-types';
 import { sqliteDataTypes } from './sqlite-data-types';
+import { oracleDataTypes } from './oracle-data-types';
 
 export interface DataType {
     id: string;
     name: string;
+}
+
+export interface DataTypeData extends DataType {
+    hasCharMaxLength?: boolean;
+    usageLevel?: 1 | 2; // Level 1 is most common, Level 2 is second most common
 }
 
 export const dataTypeSchema: z.ZodType<DataType> = z.object({
@@ -18,7 +24,7 @@ export const dataTypeSchema: z.ZodType<DataType> = z.object({
     name: z.string(),
 });
 
-export const dataTypeMap: Record<DatabaseType, readonly DataType[]> = {
+export const dataTypeMap: Record<DatabaseType, readonly DataTypeData[]> = {
     [DatabaseType.GENERIC]: genericDataTypes,
     [DatabaseType.POSTGRESQL]: postgresDataTypes,
     [DatabaseType.MYSQL]: mysqlDataTypes,
@@ -27,7 +33,50 @@ export const dataTypeMap: Record<DatabaseType, readonly DataType[]> = {
     [DatabaseType.SQLITE]: sqliteDataTypes,
     [DatabaseType.CLICKHOUSE]: clickhouseDataTypes,
     [DatabaseType.COCKROACHDB]: postgresDataTypes,
+    [DatabaseType.ORACLE]: oracleDataTypes,
 } as const;
+
+export const sortDataTypes = (dataTypes: DataTypeData[]): DataTypeData[] => {
+    const types = [...dataTypes];
+    return types.sort((a, b) => {
+        // First sort by usage level (lower numbers first)
+        if ((a.usageLevel || 3) < (b.usageLevel || 3)) return -1;
+        if ((a.usageLevel || 3) > (b.usageLevel || 3)) return 1;
+        // Then sort alphabetically by name
+        return a.name.localeCompare(b.name);
+    });
+};
+
+export const sortedDataTypeMap: Record<DatabaseType, readonly DataTypeData[]> =
+    {
+        [DatabaseType.GENERIC]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.GENERIC],
+        ]),
+        [DatabaseType.POSTGRESQL]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.POSTGRESQL],
+        ]),
+        [DatabaseType.MYSQL]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.MYSQL],
+        ]),
+        [DatabaseType.SQL_SERVER]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.SQL_SERVER],
+        ]),
+        [DatabaseType.MARIADB]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.MARIADB],
+        ]),
+        [DatabaseType.SQLITE]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.SQLITE],
+        ]),
+        [DatabaseType.CLICKHOUSE]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.CLICKHOUSE],
+        ]),
+        [DatabaseType.COCKROACHDB]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.COCKROACHDB],
+        ]),
+        [DatabaseType.ORACLE]: sortDataTypes([
+            ...dataTypeMap[DatabaseType.ORACLE],
+        ]),
+    } as const;
 
 const compatibleTypes: Record<DatabaseType, Record<string, string[]>> = {
     [DatabaseType.POSTGRESQL]: {
@@ -44,6 +93,7 @@ const compatibleTypes: Record<DatabaseType, Record<string, string[]>> = {
     [DatabaseType.SQLITE]: {},
     [DatabaseType.CLICKHOUSE]: {},
     [DatabaseType.COCKROACHDB]: {},
+    [DatabaseType.ORACLE]: {},
     [DatabaseType.GENERIC]: {},
 };
 
@@ -64,3 +114,21 @@ export function areFieldTypesCompatible(
 }
 
 export const dataTypes = Object.values(dataTypeMap).flat();
+
+export const dataTypeDataToDataType = (
+    dataTypeData: DataTypeData
+): DataType => ({
+    id: dataTypeData.id,
+    name: dataTypeData.name,
+});
+
+export const findDataTypeDataById = (
+    id: string,
+    databaseType?: DatabaseType
+): DataTypeData | undefined => {
+    const dataTypesOptions = databaseType
+        ? dataTypeMap[databaseType]
+        : dataTypes;
+
+    return dataTypesOptions.find((dataType) => dataType.id === id);
+};

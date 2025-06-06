@@ -43,9 +43,7 @@ export const ne: LanguageTranslation = {
             help: {
                 help: 'मद्दत',
                 docs_website: 'कागजात',
-                visit_website: 'वेबसाइटमा जानुहोस्',
                 join_discord: 'डिस्कोर्डमा सामिल हुनुहोस्',
-                schedule_a_call: 'कल अनुसूची गर्नुहोस्',
             },
         },
 
@@ -152,6 +150,8 @@ export const ne: LanguageTranslation = {
                         comments: 'टिप्पणीहरू',
                         no_comments: 'कुनै टिप्पणीहरू छैनन्',
                         delete_field: 'क्षेत्र हटाउनुहोस्',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'सूचक विशेषताहरू',
@@ -212,6 +212,53 @@ export const ne: LanguageTranslation = {
                         'डिपेन्डेन्सीहरू देखाउनका लागि एक व्यू बनाउनुहोस्',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -239,7 +286,7 @@ export const ne: LanguageTranslation = {
                 title: 'तपाईंको डाटाबेस आयात गर्नुहोस्',
                 database_edition: 'डाटाबेस संस्करण:',
                 step_1: 'तपाईंको डाटाबेसमा यो स्क्रिप्ट चलाउनुहोस्:',
-                step_2: 'यो स्क्रिप्ट परिणाम यहाँ पेस्ट गर्नुहोस्:',
+                step_2: 'यो स्क्रिप्ट परिणाम यहाँ पेस्ट गर्नुहोस् →',
                 script_results_placeholder: 'स्क्रिप्ट परिणाम यहाँ...',
                 ssms_instructions: {
                     button_text: 'SSMS निर्देशन',
@@ -334,6 +381,12 @@ export const ne: LanguageTranslation = {
             scale_4x: '४x',
             cancel: 'रद्द गर्नुहोस्',
             export: 'निर्यात गर्नुहोस्',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -367,7 +420,7 @@ export const ne: LanguageTranslation = {
             error: {
                 title: 'Error exporting diagram',
                 description:
-                    'Something went wrong. Need help? chartdb.io@gmail.com',
+                    'Something went wrong. Need help? support@chartdb.io',
             },
         },
 
@@ -379,7 +432,7 @@ export const ne: LanguageTranslation = {
             error: {
                 title: 'डायाग्राम आयात गर्दा समस्या आयो',
                 description:
-                    'डायाग्राम JSON अमान्य छ। कृपया JSON जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्। मद्दत चाहिन्छ? chartdb.io@gmail.com मा सम्पर्क गर्नुहोस्',
+                    'डायाग्राम JSON अमान्य छ। कृपया JSON जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्। मद्दत चाहिन्छ? support@chartdb.io मा सम्पर्क गर्नुहोस्',
             },
         },
         // TODO: Translate
@@ -407,6 +460,8 @@ export const ne: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'नयाँ तालिका',
             new_relationship: 'नयाँ सम्बन्ध',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

@@ -17,8 +17,6 @@ import { useDialog } from '@/hooks/use-dialog';
 import { useExportImage } from '@/hooks/use-export-image';
 import { databaseTypeToLabelMap } from '@/lib/databases';
 import { DatabaseType } from '@/lib/domain/database-type';
-import { useConfig } from '@/hooks/use-config';
-import { IS_CHARTDB_IO } from '@/lib/env';
 import {
     KeyboardShortcutAction,
     keyboardShortcutsForOS,
@@ -39,6 +37,7 @@ export const Menu: React.FC<MenuProps> = () => {
         deleteDiagram,
         updateDiagramUpdatedAt,
         databaseType,
+        dependencies,
     } = useChartDB();
     const {
         openCreateDiagramDialog,
@@ -65,7 +64,6 @@ export const Menu: React.FC<MenuProps> = () => {
     } = useLocalConfig();
     const { t } = useTranslation();
     const { redo, undo, hasRedo, hasUndo } = useHistory();
-    const { config, updateConfig } = useConfig();
     const { exportImage } = useExportImage();
     const navigate = useNavigate();
 
@@ -83,7 +81,11 @@ export const Menu: React.FC<MenuProps> = () => {
     };
 
     const exportSVG = useCallback(() => {
-        exportImage('svg', 1);
+        exportImage('svg', {
+            scale: 1,
+            transparent: true,
+            includePatternBG: false,
+        });
     }, [exportImage]);
 
     const exportPNG = useCallback(() => {
@@ -98,20 +100,12 @@ export const Menu: React.FC<MenuProps> = () => {
         });
     }, [openExportImageDialog]);
 
-    const openChartDBIO = useCallback(() => {
-        window.location.href = 'https://chartdb.io';
-    }, []);
-
     const openChartDBDocs = useCallback(() => {
         window.open('https://docs.chartdb.io', '_blank');
     }, []);
 
     const openJoinDiscord = useCallback(() => {
         window.open('https://discord.gg/QeFwyWSKwC', '_blank');
-    }, []);
-
-    const openCalendly = useCallback(() => {
-        window.open('https://calendly.com/fishner/15min', '_blank');
     }, []);
 
     const exportSQL = useCallback(
@@ -124,53 +118,11 @@ export const Menu: React.FC<MenuProps> = () => {
                 return;
             }
 
-            if (IS_CHARTDB_IO) {
-                const now = new Date();
-                const lastExportsInLastHalfHour =
-                    config?.exportActions?.filter(
-                        (date) =>
-                            now.getTime() - date.getTime() < 30 * 60 * 1000
-                    ) ?? [];
-
-                if (lastExportsInLastHalfHour.length >= 5) {
-                    showAlert({
-                        title: 'Export SQL Limit Reached',
-                        content: (
-                            <div className="flex flex-col gap-1 text-sm">
-                                <div>
-                                    We set a budget to allow the community to
-                                    check the feature. You have reached the
-                                    limit of 5 AI exports every 30min.
-                                </div>
-                                <div>
-                                    Feel free to use your OPENAI_TOKEN, see the
-                                    manual{' '}
-                                    <a
-                                        href="https://github.com/chartdb/chartdb"
-                                        target="_blank"
-                                        className="text-pink-600 hover:underline"
-                                        rel="noreferrer"
-                                    >
-                                        here.
-                                    </a>
-                                </div>
-                            </div>
-                        ),
-                        closeLabel: 'Close',
-                    });
-                    return;
-                }
-
-                updateConfig({
-                    exportActions: [...lastExportsInLastHalfHour, now],
-                });
-            }
-
             openExportSQLDialog({
                 targetDatabaseType: databaseType,
             });
         },
-        [config?.exportActions, updateConfig, showAlert, openExportSQLDialog]
+        [openExportSQLDialog]
     );
 
     const showOrHideSidePanel = useCallback(() => {
@@ -281,6 +233,15 @@ export const Menu: React.FC<MenuProps> = () => {
                             >
                                 {databaseTypeToLabelMap['sqlite']}
                             </MenubarItem>
+                            <MenubarItem
+                                onClick={() =>
+                                    openImportDatabaseDialog({
+                                        databaseType: DatabaseType.ORACLE,
+                                    })
+                                }
+                            >
+                                {databaseTypeToLabelMap['oracle']}
+                            </MenubarItem>
                         </MenubarSubContent>
                     </MenubarSub>
                     <MenubarSeparator />
@@ -300,17 +261,21 @@ export const Menu: React.FC<MenuProps> = () => {
                                 }
                             >
                                 {databaseTypeToLabelMap['postgresql']}
-                                <MenubarShortcut className="text-base">
-                                    {emojiAI}
-                                </MenubarShortcut>
+                                {databaseType !== DatabaseType.POSTGRESQL && (
+                                    <MenubarShortcut className="text-base">
+                                        {emojiAI}
+                                    </MenubarShortcut>
+                                )}
                             </MenubarItem>
                             <MenubarItem
                                 onClick={() => exportSQL(DatabaseType.MYSQL)}
                             >
                                 {databaseTypeToLabelMap['mysql']}
-                                <MenubarShortcut className="text-base">
-                                    {emojiAI}
-                                </MenubarShortcut>
+                                {databaseType !== DatabaseType.MYSQL && (
+                                    <MenubarShortcut className="text-base">
+                                        {emojiAI}
+                                    </MenubarShortcut>
+                                )}
                             </MenubarItem>
                             <MenubarItem
                                 onClick={() =>
@@ -318,25 +283,31 @@ export const Menu: React.FC<MenuProps> = () => {
                                 }
                             >
                                 {databaseTypeToLabelMap['sql_server']}
-                                <MenubarShortcut className="text-base">
-                                    {emojiAI}
-                                </MenubarShortcut>
+                                {databaseType !== DatabaseType.SQL_SERVER && (
+                                    <MenubarShortcut className="text-base">
+                                        {emojiAI}
+                                    </MenubarShortcut>
+                                )}
                             </MenubarItem>
                             <MenubarItem
                                 onClick={() => exportSQL(DatabaseType.MARIADB)}
                             >
                                 {databaseTypeToLabelMap['mariadb']}
-                                <MenubarShortcut className="text-base">
-                                    {emojiAI}
-                                </MenubarShortcut>
+                                {databaseType !== DatabaseType.MARIADB && (
+                                    <MenubarShortcut className="text-base">
+                                        {emojiAI}
+                                    </MenubarShortcut>
+                                )}
                             </MenubarItem>
                             <MenubarItem
                                 onClick={() => exportSQL(DatabaseType.SQLITE)}
                             >
                                 {databaseTypeToLabelMap['sqlite']}
-                                <MenubarShortcut className="text-base">
-                                    {emojiAI}
-                                </MenubarShortcut>
+                                {databaseType !== DatabaseType.SQLITE && (
+                                    <MenubarShortcut className="text-base">
+                                        {emojiAI}
+                                    </MenubarShortcut>
+                                )}
                             </MenubarItem>
                         </MenubarSubContent>
                     </MenubarSub>
@@ -436,7 +407,9 @@ export const Menu: React.FC<MenuProps> = () => {
                             ? t('menu.view.hide_cardinality')
                             : t('menu.view.show_cardinality')}
                     </MenubarItem>
-                    {databaseType !== DatabaseType.CLICKHOUSE ? (
+                    {databaseType !== DatabaseType.CLICKHOUSE &&
+                    dependencies &&
+                    dependencies.length > 0 ? (
                         <MenubarItem onClick={showOrHideDependencies}>
                             {showDependenciesOnCanvas
                                 ? t('menu.view.hide_dependencies')
@@ -470,8 +443,16 @@ export const Menu: React.FC<MenuProps> = () => {
                     </MenubarSub>
                     <MenubarSeparator />
                     <MenubarSub>
-                        <MenubarSubTrigger>
-                            {t('menu.view.theme')}
+                        <MenubarSubTrigger className="flex items-center gap-1">
+                            <span>{t('menu.view.theme')}</span>
+                            <div className="flex-1" />
+                            <MenubarShortcut>
+                                {
+                                    keyboardShortcutsForOS[
+                                        KeyboardShortcutAction.TOGGLE_THEME
+                                    ].keyCombinationLabel
+                                }
+                            </MenubarShortcut>
                         </MenubarSubTrigger>
                         <MenubarSubContent>
                             <MenubarCheckboxItem
@@ -515,14 +496,8 @@ export const Menu: React.FC<MenuProps> = () => {
                     <MenubarItem onClick={openChartDBDocs}>
                         {t('menu.help.docs_website')}
                     </MenubarItem>
-                    <MenubarItem onClick={openChartDBIO}>
-                        {t('menu.help.visit_website')}
-                    </MenubarItem>
                     <MenubarItem onClick={openJoinDiscord}>
                         {t('menu.help.join_discord')}
-                    </MenubarItem>
-                    <MenubarItem onClick={openCalendly}>
-                        {t('menu.help.schedule_a_call')}
                     </MenubarItem>
                 </MenubarContent>
             </MenubarMenu>

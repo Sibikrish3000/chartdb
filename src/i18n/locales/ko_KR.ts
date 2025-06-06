@@ -42,9 +42,7 @@ export const ko_KR: LanguageTranslation = {
             help: {
                 help: '도움말',
                 docs_website: '선적 서류 비치',
-                visit_website: 'ChartDB 사이트 방문',
                 join_discord: 'Discord 가입',
-                schedule_a_call: 'Talk with us!',
             },
         },
 
@@ -151,6 +149,8 @@ export const ko_KR: LanguageTranslation = {
                         comments: '주석',
                         no_comments: '주석 없음',
                         delete_field: '필드 삭제',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: '인덱스 속성',
@@ -210,6 +210,53 @@ export const ko_KR: LanguageTranslation = {
                     description: '뷰 테이블을 만들어 시작하세요.',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -236,7 +283,7 @@ export const ko_KR: LanguageTranslation = {
                 title: '당신의 데이터베이스를 가져오세요',
                 database_edition: '데이터베이스 세부 종류:',
                 step_1: '데이터베이스에서 아래의 SQL을 실행해주세요:',
-                step_2: '이곳에 결과를 붙여넣어주세요:',
+                step_2: '이곳에 결과를 붙여넣어주세요 →',
                 script_results_placeholder: '이곳에 스크립트 결과를 입력...',
                 ssms_instructions: {
                     button_text: 'SSMS을 사용하시는 경우',
@@ -329,6 +376,12 @@ export const ko_KR: LanguageTranslation = {
             scale_4x: '4x',
             cancel: '취소',
             export: '내보내기',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -362,7 +415,7 @@ export const ko_KR: LanguageTranslation = {
             error: {
                 title: '다이어그램 내보내기 오류',
                 description:
-                    '무언가 문제가 발생하였습니다. 도움이 필요하신 경우 chartdb.io@gmail.com으로 연락해주세요.',
+                    '무언가 문제가 발생하였습니다. 도움이 필요하신 경우 support@chartdb.io으로 연락해주세요.',
             },
         },
         import_diagram_dialog: {
@@ -373,7 +426,7 @@ export const ko_KR: LanguageTranslation = {
             error: {
                 title: '다이어그램 가져오기 오류',
                 description:
-                    '다이어그램 JSON이 유효하지 않습니다. JSON이 올바른 형식인지 확인해주세요. 도움이 필요하신 경우 chartdb.io@gmail.com으로 연락해주세요.',
+                    '다이어그램 JSON이 유효하지 않습니다. JSON이 올바른 형식인지 확인해주세요. 도움이 필요하신 경우 support@chartdb.io으로 연락해주세요.',
             },
         },
         // TODO: Translate
@@ -400,6 +453,8 @@ export const ko_KR: LanguageTranslation = {
         canvas_context_menu: {
             new_table: '새 테이블',
             new_relationship: '새 연관관계',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {

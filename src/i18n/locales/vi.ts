@@ -42,9 +42,7 @@ export const vi: LanguageTranslation = {
             help: {
                 help: 'Trợ giúp',
                 docs_website: 'Tài liệu',
-                visit_website: 'Truy cập ChartDB',
                 join_discord: 'Tham gia Discord',
-                schedule_a_call: 'Trò chuyện cùng chúng tôi!',
             },
         },
 
@@ -151,6 +149,8 @@ export const vi: LanguageTranslation = {
                         comments: 'Bình luận',
                         no_comments: 'Không có bình luận',
                         delete_field: 'Xóa trường',
+                        // TODO: Translate
+                        character_length: 'Max Length',
                     },
                     index_actions: {
                         title: 'Thuộc tính chỉ mục',
@@ -210,6 +210,53 @@ export const vi: LanguageTranslation = {
                     description: 'Tạo bảng xem phụ thuộc để bắt đầu',
                 },
             },
+
+            // TODO: Translate
+            areas_section: {
+                areas: 'Areas',
+                add_area: 'Add Area',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No areas found matching your filter.',
+
+                area: {
+                    area_actions: {
+                        title: 'Area Actions',
+                        edit_name: 'Edit Name',
+                        delete_area: 'Delete Area',
+                    },
+                },
+                empty_state: {
+                    title: 'No areas',
+                    description: 'Create an area to get started',
+                },
+            },
+            // TODO: Translate
+            custom_types_section: {
+                custom_types: 'Custom Types',
+                filter: 'Filter',
+                clear: 'Clear Filter',
+                no_results: 'No custom types found matching your filter.',
+                empty_state: {
+                    title: 'No custom types',
+                    description:
+                        'Custom types will appear here when they are available in your database',
+                },
+                custom_type: {
+                    kind: 'Kind',
+                    enum_values: 'Enum Values',
+                    composite_fields: 'Fields',
+                    no_fields: 'No fields defined',
+                    field_name_placeholder: 'Field name',
+                    field_type_placeholder: 'Select type',
+                    add_field: 'Add Field',
+                    custom_type_actions: {
+                        title: 'Actions',
+                        delete_custom_type: 'Delete',
+                    },
+                    delete_custom_type: 'Delete Type',
+                },
+            },
         },
 
         toolbar: {
@@ -236,7 +283,7 @@ export const vi: LanguageTranslation = {
                 title: 'Nhập cơ sở dữ liệu của bạn',
                 database_edition: 'Loại:',
                 step_1: 'Chạy lệnh này trong cơ sở dữ liệu của bạn:',
-                step_2: 'Dán kết quả vào đây:',
+                step_2: 'Dán kết quả vào đây →',
                 script_results_placeholder: 'Kết quả...',
                 ssms_instructions: {
                     button_text: 'Hướng dẫn SSMS',
@@ -329,6 +376,12 @@ export const vi: LanguageTranslation = {
             scale_4x: '4x',
             cancel: 'Hủy',
             export: 'Xuất',
+            // TODO: Translate
+            advanced_options: 'Advanced Options',
+            pattern: 'Include background pattern',
+            pattern_description: 'Add subtle grid pattern to background.',
+            transparent: 'Transparent background',
+            transparent_description: 'Remove background color from image.',
         },
 
         new_table_schema_dialog: {
@@ -362,7 +415,7 @@ export const vi: LanguageTranslation = {
             error: {
                 title: 'Lỗi khi xuất sơ đồ',
                 description:
-                    'Có gì đó không ổn. Cần trợ giúp? chartdb.io@gmail.com',
+                    'Có gì đó không ổn. Cần trợ giúp? support@chartdb.io',
             },
         },
 
@@ -374,7 +427,7 @@ export const vi: LanguageTranslation = {
             error: {
                 title: 'Lỗi khi nhập sơ đồ',
                 description:
-                    'Sơ đồ ở dạng JSON không hợp lệ. Vui lòng kiểm tra JSON và thử lại. Bạn cần trợ giúp? chartdb.io@gmail.com',
+                    'Sơ đồ ở dạng JSON không hợp lệ. Vui lòng kiểm tra JSON và thử lại. Bạn cần trợ giúp? support@chartdb.io',
             },
         },
         // TODO: Translate
@@ -401,6 +454,8 @@ export const vi: LanguageTranslation = {
         canvas_context_menu: {
             new_table: 'Tạo bảng mới',
             new_relationship: 'Tạo quan hệ mới',
+            // TODO: Translate
+            new_area: 'New Area',
         },
 
         table_node_context_menu: {
